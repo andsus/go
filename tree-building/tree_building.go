@@ -35,9 +35,7 @@ func Build(records []Record) (*Node, error) {
 		}
 
 		if r.ID > 0 {
-			if parent := nodes[r.Parent]; parent != nil {
-				parent.Children = append(parent.Children, nodes[i])
-			}
+			nodes[r.Parent].Children = append(nodes[r.Parent].Children, nodes[i])
 		}
 	}
 	return nodes[0], nil
