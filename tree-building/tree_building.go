@@ -29,11 +29,10 @@ func Build(records []Record) (*Node, error) {
 	sort.Slice(records, func(i, j int) bool { return records[i].ID < records[j].ID })
 	nodes := make([]*Node, len(records))
 	for i, r := range records {
-		nodes[i] = &Node{ID: r.ID}
 		if i != r.ID || r.Parent > r.ID || r.ID > 0 && r.ID == r.Parent {
 			return nil, fmt.Errorf("Not in sequence or has a bad parent: %v", r)
 		}
-
+		nodes[i] = &Node{ID: r.ID}
 		if r.ID > 0 {
 			nodes[r.Parent].Children = append(nodes[r.Parent].Children, nodes[i])
 		}
