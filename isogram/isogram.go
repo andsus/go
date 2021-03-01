@@ -14,7 +14,7 @@ func IsIsogram(input string) bool {
 			if _, ok := isoMap[r]; ok {
 				return false
 			}
-			isoMap[r] = false
+			isoMap[r] = true
 
 		}
 	}
