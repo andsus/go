@@ -1,0 +1,380 @@
+[0m2021.04.04 13:35:58 INFO  Started: Metals version 0.10.0 in workspace '/home/andre/snap/exercism/5/exercism/go' for client vscode 1.54.3.[0m
+[0m2021.04.04 13:35:59 INFO  time: initialize in 1.46s[0m
+[0m2021.04.04 13:36:01 WARN  Build server is not auto-connectable.[0m
+[0m2021.04.04 13:36:01 WARN  no build tool detected in workspace '/home/andre/snap/exercism/5/exercism/go'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. [0m
+[0m2021.04.04 13:36:01 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/grade-school/src/main/scala/GradeSchool.scala[0m
+[0m2021.04.04 13:36:06 INFO  no build target: using presentation compiler with only scala-library: 2.12.13[0m
+import scala.collection.immutable.TreeMap
+class School {
+  type DB = Map[Int, Seq[String]]
+  
+  private var _db: DB = TreeMap()
+
+  def add(name: String, g: Int) = { _db = _db.updated(g, grade(g) :+ name ) }
+
+  def db: DB = _db
+
+  def grade(g: Int): Seq[String] = db.getOrElse(g, Seq())
+
+  
+  def sorted: DB = _db.transform( (k,v) => v.sorted)
+}
+
+
+[0m2021.04.04 13:36:11 INFO  time: code lens generation in 9.38s[0m
+[0m2021.04.04 13:36:49 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/grade-school/src/main/scala/GradeSchool.scala[0m
+[0m2021.04.04 13:36:49 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/grade-school/src/main/scala/GradeSchool.scala[0m
+[0m2021.04.04 13:36:49 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/grade-school/src/main/scala/GradeSchool.scala[0m
+[0m2021.04.04 13:36:49 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/grade-school/src/main/scala/GradeSchool.scala[0m
+[0m2021.04.04 13:36:49 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/grade-school/src/main/scala/GradeSchool.scala[0m
+[0m2021.04.04 13:40:50 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/grade-school/src/test/scala/GradeSchoolTest.scala[0m
+import org.scalatest._
+
+/** @version created manually **/
+class GradeSchoolTest extends FunSuite with Matchers with OneInstancePerTest {
+  val school = new School
+
+  test ("empty school") {
+    school.db should be (Map())
+  }
+
+  test ("add student") {
+    //pending
+    school.add("Aimee", 2)
+    school.db should be (Map(2 -> Seq("Aimee")))
+  }
+
+  test ("add more students in same class") {
+    //pending
+    school.add("James", 2)
+    school.add("Blair", 2)
+    school.add("Paul", 2)
+    school.db should be (Map(2 -> Seq("James", "Blair", "Paul")))
+  }
+
+  test ("add students to different grades") {
+    //pending
+    school.add("Chelsea", 3)
+    school.add("Logan", 7)
+    school.db should be (Map(3 -> Seq("Chelsea"), 7 -> Seq("Logan")))
+  }
+
+  test ("get students in a grade") {
+    //pending
+    school.add("Franklin", 5)
+    school.add("Bradley", 5)
+    school.add("Jeff", 1)
+    school.grade(5) should be (Seq("Franklin", "Bradley"))
+  }
+
+  test ("get students in a non-existant grade") {
+    //pending
+    school.grade(1) should be (Seq())
+  }
+
+  test ("sort school") {
+    //pending
+    school.add("Jennifer", 4)
+    school.add("Kareem", 6)
+    school.add("Christopher", 4)
+    school.add("Kyle", 3)
+    val sorted = Map(
+      3 -> Seq("Kyle"),
+      4 -> Seq("Christopher", "Jennifer"),
+      6 -> Seq("Kareem")
+    )
+    school.sorted should be (sorted)
+    school.sorted.keys.toList should be (Seq(3, 4, 6))
+  }
+}
+
+[0m2021.04.04 13:40:52 INFO  time: code lens generation in 1.44s[0m
+[0m2021.04.04 13:59:30 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/grade-school/src/main/scala/GradeSchool.scala[0m
+[0m2021.04.04 13:59:30 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/grade-school/src/main/scala/GradeSchool.scala[0m
+[0m2021.04.04 13:59:30 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/grade-school/src/main/scala/GradeSchool.scala[0m
+[0m2021.04.04 13:59:30 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/grade-school/src/main/scala/GradeSchool.scala[0m
+[0m2021.04.04 13:59:30 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/grade-school/src/main/scala/GradeSchool.scala[0m
+[0m2021.04.04 13:59:30 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/grade-school/src/main/scala/GradeSchool.scala[0m
+[0m2021.04.04 14:01:12 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/grade-school/src/test/scala/GradeSchoolTest.scala[0m
+[0m2021.04.04 14:01:12 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/grade-school/src/test/scala/GradeSchoolTest.scala[0m
+[0m2021.04.04 14:07:35 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/grade-school/src/test/scala/GradeSchoolTest.scala[0m
+[0m2021.04.04 14:08:22 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/grade-school/src/test/scala/GradeSchoolTest.scala[0m
+[0m2021.04.04 14:08:28 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/grade-school/src/main/scala/GradeSchool.scala[0m
+[0m2021.04.04 14:08:28 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/grade-school/src/main/scala/GradeSchool.scala[0m
+[0m2021.04.04 14:08:28 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/grade-school/src/main/scala/GradeSchool.scala[0m
+[0m2021.04.04 14:08:28 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/grade-school/src/main/scala/GradeSchool.scala[0m
+[0m2021.04.04 14:08:28 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/grade-school/src/main/scala/GradeSchool.scala[0m
+[0m2021.04.04 14:08:28 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/grade-school/src/main/scala/GradeSchool.scala[0m
+[0m2021.04.04 14:32:57 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/grade-school/src/main/scala/GradeSchool.scala[0m
+[0m2021.04.04 14:32:57 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/grade-school/src/main/scala/GradeSchool.scala[0m
+[0m2021.04.04 14:32:57 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/grade-school/src/main/scala/GradeSchool.scala[0m
+[0m2021.04.04 14:32:57 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/grade-school/src/main/scala/GradeSchool.scala[0m
+[0m2021.04.04 14:32:57 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/grade-school/src/main/scala/GradeSchool.scala[0m
+[0m2021.04.04 14:40:18 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/grade-school/src/main/scala/GradeSchool.scala[0m
+[0m2021.04.04 14:40:18 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/grade-school/src/main/scala/GradeSchool.scala[0m
+[0m2021.04.04 14:40:18 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/grade-school/src/main/scala/GradeSchool.scala[0m
+[0m2021.04.04 14:40:18 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/grade-school/src/main/scala/GradeSchool.scala[0m
+[0m2021.04.04 14:40:18 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/grade-school/src/main/scala/GradeSchool.scala[0m
+[0m2021.04.04 14:40:28 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/grade-school/src/main/scala/GradeSchool.scala[0m
+[0m2021.04.04 14:40:28 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/grade-school/src/main/scala/GradeSchool.scala[0m
+[0m2021.04.04 14:40:28 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/grade-school/src/main/scala/GradeSchool.scala[0m
+[0m2021.04.04 14:40:28 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/grade-school/src/main/scala/GradeSchool.scala[0m
+[0m2021.04.04 14:40:28 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/grade-school/src/main/scala/GradeSchool.scala[0m
+[0m2021.04.04 14:40:47 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/grade-school/src/main/scala/GradeSchool.scala[0m
+[0m2021.04.04 14:40:47 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/grade-school/src/main/scala/GradeSchool.scala[0m
+[0m2021.04.04 14:40:47 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/grade-school/src/main/scala/GradeSchool.scala[0m
+[0m2021.04.04 14:40:47 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/grade-school/src/main/scala/GradeSchool.scala[0m
+[0m2021.04.04 14:40:47 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/grade-school/src/main/scala/GradeSchool.scala[0m
+[0m2021.04.04 14:40:50 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/grade-school/src/main/scala/GradeSchool.scala[0m
+[0m2021.04.04 14:40:50 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/grade-school/src/main/scala/GradeSchool.scala[0m
+[0m2021.04.04 14:40:50 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/grade-school/src/main/scala/GradeSchool.scala[0m
+[0m2021.04.04 14:40:50 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/grade-school/src/main/scala/GradeSchool.scala[0m
+[0m2021.04.04 14:40:50 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/grade-school/src/main/scala/GradeSchool.scala[0m
+[0m2021.04.04 14:42:52 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/grade-school/src/main/scala/GradeSchool.scala[0m
+[0m2021.04.04 14:42:52 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/grade-school/src/main/scala/GradeSchool.scala[0m
+[0m2021.04.04 14:42:52 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/grade-school/src/main/scala/GradeSchool.scala[0m
+[0m2021.04.04 14:42:52 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/grade-school/src/main/scala/GradeSchool.scala[0m
+[0m2021.04.04 14:42:52 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/grade-school/src/main/scala/GradeSchool.scala[0m
+[0m2021.04.04 14:54:27 INFO  shutting down Metals[0m
+[0m2021.04.05 11:11:08 INFO  Started: Metals version 0.10.0 in workspace '/home/andre/snap/exercism/5/exercism/go' for client vscode 1.54.3.[0m
+[0m2021.04.05 11:11:10 INFO  time: initialize in 1.39s[0m
+[0m2021.04.05 11:11:11 WARN  Build server is not auto-connectable.[0m
+[0m2021.04.05 11:11:11 WARN  no build tool detected in workspace '/home/andre/snap/exercism/5/exercism/go'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. [0m
+[0m2021.04.05 11:11:11 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/grade-school/src/main/scala/GradeSchool.scala[0m
+[0m2021.04.05 11:11:19 INFO  no build target: using presentation compiler with only scala-library: 2.12.13[0m
+import scala.collection.immutable.TreeMap
+class School {
+  type DB = Map[Int, Seq[String]]
+  
+  private var _db: DB = TreeMap()
+
+  def add(name: String, g: Int) = { _db = _db.updated(g, grade(g) :+ name ) }
+
+  def db: DB = _db
+
+  def grade(g: Int): Seq[String] = db.getOrElse(g, Seq())
+
+  
+  def sorted: DB = _db.transform( (k,v) => v.sorted)
+}
+
+
+[0m2021.04.05 11:11:25 INFO  time: code lens generation in 13s[0m
+Apr 05, 2021 1:33:08 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTraceNotification
+[0m2021.04.05 13:33:31 INFO  shutting down Metals[0m
+[0m2021.05.14 18:31:36 INFO  Started: Metals version 0.10.2 in workspace '/home/andre/snap/exercism/5/exercism/go' for client vscode 1.55.2.[0m
+[0m2021.05.14 18:31:37 INFO  time: initialize in 1.28s[0m
+[0m2021.05.14 18:31:37 WARN  Build server is not auto-connectable.[0m
+[0m2021.05.14 18:31:37 WARN  no build tool detected in workspace '/home/andre/snap/exercism/5/exercism/go'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. [0m
+[0m2021.05.14 18:31:39 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/robot-simulator/src/main/scala/Robot.scala[0m
+[0m2021.05.14 18:31:43 INFO  no build target: using presentation compiler with only scala-library: 2.12.13[0m
+[0m2021.05.14 18:31:50 INFO  time: code lens generation in 11s[0m
+[0m2021.05.14 18:32:32 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/robot-simulator/src/main/scala/Robot.scala[0m
+[0m2021.05.14 18:32:32 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/robot-simulator/src/main/scala/Robot.scala[0m
+[0m2021.05.14 18:32:33 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/robot-simulator/src/main/scala/Robot.scala[0m
+[0m2021.05.14 18:32:33 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/robot-simulator/src/main/scala/Robot.scala[0m
+[0m2021.05.14 18:32:33 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/robot-simulator/src/main/scala/Robot.scala[0m
+[0m2021.05.14 18:33:46 WARN  no build target for: /home/andre/snap/exercism/5/exercism/users/HegelPro/scala/robot-simulator/src/main/scala/Robot.scala[0m
+[0m2021.05.14 18:33:49 WARN  no build target for: /home/andre/snap/exercism/5/exercism/users/HegelPro/scala/robot-simulator/src/main/scala/Robot.scala[0m
+[0m2021.05.14 18:33:49 WARN  no build target for: /home/andre/snap/exercism/5/exercism/users/HegelPro/scala/robot-simulator/src/main/scala/Robot.scala[0m
+[0m2021.05.14 18:33:49 WARN  no build target for: /home/andre/snap/exercism/5/exercism/users/HegelPro/scala/robot-simulator/src/main/scala/Robot.scala[0m
+[0m2021.05.14 18:33:49 WARN  no build target for: /home/andre/snap/exercism/5/exercism/users/HegelPro/scala/robot-simulator/src/main/scala/Robot.scala[0m
+[0m2021.05.14 18:33:49 WARN  no build target for: /home/andre/snap/exercism/5/exercism/users/HegelPro/scala/robot-simulator/src/main/scala/Robot.scala[0m
+[0m2021.05.14 18:33:49 WARN  no build target for: /home/andre/snap/exercism/5/exercism/users/HegelPro/scala/robot-simulator/src/main/scala/Robot.scala[0m
+[0m2021.05.14 18:33:49 WARN  no build target for: /home/andre/snap/exercism/5/exercism/users/HegelPro/scala/robot-simulator/src/main/scala/Robot.scala[0m
+[0m2021.05.14 18:33:49 WARN  no build target for: /home/andre/snap/exercism/5/exercism/users/HegelPro/scala/robot-simulator/src/main/scala/Robot.scala[0m
+[0m2021.05.14 18:33:49 WARN  no build target for: /home/andre/snap/exercism/5/exercism/users/HegelPro/scala/robot-simulator/src/main/scala/Robot.scala[0m
+[0m2021.05.14 18:33:49 WARN  no build target for: /home/andre/snap/exercism/5/exercism/users/HegelPro/scala/robot-simulator/src/main/scala/Robot.scala[0m
+[0m2021.05.14 18:33:49 WARN  no build target for: /home/andre/snap/exercism/5/exercism/users/HegelPro/scala/robot-simulator/src/main/scala/Robot.scala[0m
+[0m2021.05.14 18:33:50 WARN  no build target for: /home/andre/snap/exercism/5/exercism/users/HegelPro/scala/robot-simulator/src/main/scala/Robot.scala[0m
+[0m2021.05.14 18:33:50 WARN  no build target for: /home/andre/snap/exercism/5/exercism/users/HegelPro/scala/robot-simulator/src/main/scala/Robot.scala[0m
+[0m2021.05.14 18:33:50 WARN  no build target for: /home/andre/snap/exercism/5/exercism/users/HegelPro/scala/robot-simulator/src/main/scala/Robot.scala[0m
+[0m2021.05.14 18:33:52 WARN  no build target for: /home/andre/snap/exercism/5/exercism/users/HegelPro/scala/robot-simulator/src/main/scala/Robot.scala[0m
+[0m2021.05.14 18:33:52 WARN  no build target for: /home/andre/snap/exercism/5/exercism/users/HegelPro/scala/robot-simulator/src/main/scala/Robot.scala[0m
+[0m2021.05.14 18:33:52 WARN  no build target for: /home/andre/snap/exercism/5/exercism/users/HegelPro/scala/robot-simulator/src/main/scala/Robot.scala[0m
+[0m2021.05.14 18:33:52 WARN  no build target for: /home/andre/snap/exercism/5/exercism/users/HegelPro/scala/robot-simulator/src/main/scala/Robot.scala[0m
+[0m2021.05.14 18:33:52 WARN  no build target for: /home/andre/snap/exercism/5/exercism/users/HegelPro/scala/robot-simulator/src/main/scala/Robot.scala[0m
+[0m2021.05.14 18:33:52 WARN  no build target for: /home/andre/snap/exercism/5/exercism/users/HegelPro/scala/robot-simulator/src/main/scala/Robot.scala[0m
+[0m2021.05.14 18:33:52 WARN  no build target for: /home/andre/snap/exercism/5/exercism/users/HegelPro/scala/robot-simulator/src/main/scala/Robot.scala[0m
+[0m2021.05.14 18:35:05 WARN  no build target for: /home/andre/snap/exercism/5/exercism/users/HegelPro/scala/robot-simulator/src/main/scala/Robot.scala[0m
+[0m2021.05.14 18:35:05 WARN  no build target for: /home/andre/snap/exercism/5/exercism/users/HegelPro/scala/robot-simulator/src/main/scala/Robot.scala[0m
+[0m2021.05.14 18:35:05 WARN  no build target for: /home/andre/snap/exercism/5/exercism/users/HegelPro/scala/robot-simulator/src/main/scala/Robot.scala[0m
+[0m2021.05.14 18:35:05 WARN  no build target for: /home/andre/snap/exercism/5/exercism/users/HegelPro/scala/robot-simulator/src/main/scala/Robot.scala[0m
+[0m2021.05.14 18:35:06 WARN  no build target for: /home/andre/snap/exercism/5/exercism/users/HegelPro/scala/robot-simulator/src/main/scala/Robot.scala[0m
+[0m2021.05.14 18:35:06 WARN  no build target for: /home/andre/snap/exercism/5/exercism/users/HegelPro/scala/robot-simulator/src/main/scala/Robot.scala[0m
+[0m2021.05.14 18:35:06 WARN  no build target for: /home/andre/snap/exercism/5/exercism/users/HegelPro/scala/robot-simulator/src/main/scala/Robot.scala[0m
+[0m2021.05.14 18:35:08 WARN  no build target for: /home/andre/snap/exercism/5/exercism/users/HegelPro/scala/robot-simulator/src/main/scala/RobotSimulator.scala[0m
+May 14, 2021 6:35:08 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 53
+May 14, 2021 6:35:13 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 57
+[0m2021.05.14 18:35:13 WARN  no build target for: /home/andre/snap/exercism/5/exercism/users/HegelPro/scala/robot-simulator/src/main/scala/Robot.scala[0m
+[0m2021.05.14 18:35:14 WARN  no build target for: /home/andre/snap/exercism/5/exercism/users/HegelPro/scala/robot-simulator/src/main/scala/Robot.scala[0m
+[0m2021.05.14 18:35:14 WARN  no build target for: /home/andre/snap/exercism/5/exercism/users/HegelPro/scala/robot-simulator/src/main/scala/Robot.scala[0m
+[0m2021.05.14 18:35:14 WARN  no build target for: /home/andre/snap/exercism/5/exercism/users/HegelPro/scala/robot-simulator/src/main/scala/Robot.scala[0m
+[0m2021.05.14 18:35:14 WARN  no build target for: /home/andre/snap/exercism/5/exercism/users/HegelPro/scala/robot-simulator/src/main/scala/Robot.scala[0m
+[0m2021.05.14 18:35:14 WARN  no build target for: /home/andre/snap/exercism/5/exercism/users/HegelPro/scala/robot-simulator/src/main/scala/Robot.scala[0m
+[0m2021.05.14 18:35:14 WARN  no build target for: /home/andre/snap/exercism/5/exercism/users/HegelPro/scala/robot-simulator/src/main/scala/Robot.scala[0m
+[0m2021.05.14 18:35:19 WARN  no build target for: /home/andre/snap/exercism/5/exercism/users/HegelPro/scala/robot-simulator/src/test/scala/RobotSimulatorTest.scala[0m
+[0m2021.05.14 18:35:44 INFO  shutting down Metals[0m
+[0m2021.05.14 18:43:51 INFO  Started: Metals version 0.10.2 in workspace '/home/andre/snap/exercism/5/exercism/go' for client vscode 1.55.2.[0m
+[0m2021.05.14 18:43:53 INFO  time: initialize in 2.37s[0m
+[0m2021.05.14 18:43:55 WARN  Build server is not auto-connectable.[0m
+[0m2021.05.14 18:43:55 WARN  no build tool detected in workspace '/home/andre/snap/exercism/5/exercism/go'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. [0m
+[0m2021.05.14 18:43:55 WARN  no build target for: /home/andre/snap/exercism/5/exercism/users/HegelPro/scala/robot-simulator/src/main/scala/Robot.scala[0m
+[0m2021.05.14 18:44:00 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/robot-simulator/src/main/scala/Robot.scala[0m
+[0m2021.05.14 18:44:03 INFO  no build target: using presentation compiler with only scala-library: 2.12.13[0m
+[0m2021.05.14 18:44:11 INFO  time: code lens generation in 10s[0m
+[0m2021.05.14 18:44:11 INFO  time: code lens generation in 14s[0m
+[0m2021.05.14 18:44:13 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/robot-simulator/src/main/scala/Robot.scala[0m
+[0m2021.05.14 18:44:13 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/robot-simulator/src/main/scala/Robot.scala[0m
+[0m2021.05.14 18:44:13 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/robot-simulator/src/main/scala/Robot.scala[0m
+[0m2021.05.14 18:44:13 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/robot-simulator/src/main/scala/Robot.scala[0m
+[0m2021.05.14 18:44:13 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/robot-simulator/src/main/scala/Robot.scala[0m
+[0m2021.05.14 18:47:59 INFO  shutting down Metals[0m
+[0m2021.05.14 18:54:56 INFO  Started: Metals version 0.10.2 in workspace '/home/andre/snap/exercism/5/exercism/go' for client vscode 1.55.2.[0m
+[0m2021.05.14 18:54:58 INFO  time: initialize in 2.1s[0m
+[0m2021.05.14 18:55:01 WARN  Build server is not auto-connectable.[0m
+[0m2021.05.14 18:55:01 WARN  no build tool detected in workspace '/home/andre/snap/exercism/5/exercism/go'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. [0m
+[0m2021.05.14 18:55:01 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/robot-simulator/src/main/scala/Robot.scala[0m
+[0m2021.05.14 18:55:07 INFO  no build target: using presentation compiler with only scala-library: 2.12.13[0m
+[0m2021.05.14 18:55:13 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/leap/src/main/scala/Leap.scala[0m
+[0m2021.05.14 18:55:17 INFO  time: code lens generation in 3.92s[0m
+[0m2021.05.14 18:55:17 INFO  time: code lens generation in 14s[0m
+[0m2021.05.14 18:56:17 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/leap/src/main/scala/Leap.scala[0m
+[0m2021.05.14 18:56:25 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/leap/src/main/scala/Leap.scala[0m
+[0m2021.05.14 18:56:29 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/leap/src/main/scala/Leap.scala[0m
+[0m2021.05.14 18:56:31 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/leap/src/main/scala/Leap.scala[0m
+[0m2021.05.14 18:56:34 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/leap/src/main/scala/Leap.scala[0m
+[0m2021.05.14 18:56:36 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/leap/src/main/scala/Leap.scala[0m
+[0m2021.05.14 18:56:41 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/leap/src/main/scala/Leap.scala[0m
+[0m2021.05.14 18:56:43 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/leap/src/main/scala/Leap.scala[0m
+[0m2021.05.14 18:56:45 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/leap/src/main/scala/Leap.scala[0m
+[0m2021.05.14 18:56:46 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/leap/src/main/scala/Leap.scala[0m
+[0m2021.05.14 18:56:49 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/leap/src/main/scala/Leap.scala[0m
+[0m2021.05.14 18:56:50 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/leap/src/main/scala/Leap.scala[0m
+[0m2021.05.14 18:56:52 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/leap/src/main/scala/Leap.scala[0m
+[0m2021.05.14 18:56:53 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/leap/src/main/scala/Leap.scala[0m
+[0m2021.05.14 18:56:56 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/leap/src/main/scala/Leap.scala[0m
+[0m2021.05.14 18:56:57 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/leap/src/main/scala/Leap.scala[0m
+[0m2021.05.14 18:56:58 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/leap/src/main/scala/Leap.scala[0m
+[0m2021.05.14 18:56:59 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/leap/src/main/scala/Leap.scala[0m
+[0m2021.05.14 18:57:12 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/leap/src/main/scala/Leap.scala[0m
+[0m2021.05.14 18:57:12 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/leap/src/main/scala/Leap.scala[0m
+[0m2021.05.14 18:57:14 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/leap/src/main/scala/Leap.scala[0m
+[0m2021.05.14 18:57:18 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/leap/src/main/scala/Leap.scala[0m
+[0m2021.05.14 18:57:30 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/leap/src/main/scala/Leap.scala[0m
+[0m2021.05.14 18:57:33 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/leap/src/main/scala/Leap.scala[0m
+[0m2021.05.14 18:57:33 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/leap/src/main/scala/Leap.scala[0m
+[0m2021.05.14 18:57:34 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/leap/src/main/scala/Leap.scala[0m
+[0m2021.05.14 18:57:34 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/leap/src/main/scala/Leap.scala[0m
+[0m2021.05.14 18:57:35 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/leap/src/main/scala/Leap.scala[0m
+[0m2021.05.14 18:57:35 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/leap/src/main/scala/Leap.scala[0m
+[0m2021.05.14 18:57:38 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/leap/src/main/scala/Leap.scala[0m
+[0m2021.05.14 18:57:39 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/leap/src/main/scala/Leap.scala[0m
+[0m2021.05.14 18:57:49 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/leap/src/main/scala/Leap.scala[0m
+[0m2021.05.14 18:57:51 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/leap/src/main/scala/Leap.scala[0m
+[0m2021.05.14 18:57:53 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/leap/src/main/scala/Leap.scala[0m
+[0m2021.05.14 18:57:54 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/leap/src/main/scala/Leap.scala[0m
+[0m2021.05.14 18:57:57 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/leap/src/main/scala/Leap.scala[0m
+[0m2021.05.14 18:57:57 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/leap/src/main/scala/Leap.scala[0m
+[0m2021.05.14 18:57:58 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/leap/src/main/scala/Leap.scala[0m
+[0m2021.05.14 18:57:58 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/leap/src/main/scala/Leap.scala[0m
+[0m2021.05.14 18:57:59 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/leap/src/main/scala/Leap.scala[0m
+[0m2021.05.14 18:58:00 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/leap/src/main/scala/Leap.scala[0m
+[0m2021.05.14 18:58:01 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/leap/src/main/scala/Leap.scala[0m
+[0m2021.05.14 18:58:01 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/leap/src/main/scala/Leap.scala[0m
+[0m2021.05.14 18:58:06 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/leap/src/main/scala/Leap.scala[0m
+[0m2021.05.14 18:58:07 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/leap/src/main/scala/Leap.scala[0m
+[0m2021.05.14 18:58:07 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/leap/src/main/scala/Leap.scala[0m
+[0m2021.05.14 18:58:09 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/leap/src/main/scala/Leap.scala[0m
+[0m2021.05.14 18:58:10 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/leap/src/main/scala/Leap.scala[0m
+[0m2021.05.14 18:58:10 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/leap/src/main/scala/Leap.scala[0m
+[0m2021.05.14 18:58:11 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/leap/src/main/scala/Leap.scala[0m
+[0m2021.05.14 18:58:11 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/leap/src/main/scala/Leap.scala[0m
+[0m2021.05.14 18:58:12 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/leap/src/main/scala/Leap.scala[0m
+[0m2021.05.14 18:58:13 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/leap/src/main/scala/Leap.scala[0m
+[0m2021.05.14 18:58:22 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/leap/src/main/scala/Leap.scala[0m
+[0m2021.05.14 18:58:26 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/leap/src/main/scala/Leap.scala[0m
+[0m2021.05.14 18:58:28 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/leap/src/main/scala/Leap.scala[0m
+[0m2021.05.14 19:00:16 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/bob/src/main/scala/Bob.scala[0m
+[0m2021.05.14 19:18:44 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/etl/src/main/scala/Etl.scala[0m
+[0m2021.05.14 19:48:57 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/etl/src/main/scala/Etl.scala[0m
+[0m2021.05.14 19:50:42 INFO  shutting down Metals[0m
+[0m2021.05.14 19:51:03 INFO  Started: Metals version 0.10.2 in workspace '/home/andre/snap/exercism/5/exercism/go' for client vscode 1.55.2.[0m
+[0m2021.05.14 19:51:04 INFO  time: initialize in 1.02s[0m
+[0m2021.05.14 19:51:04 WARN  Build server is not auto-connectable.[0m
+[0m2021.05.14 19:51:04 WARN  no build tool detected in workspace '/home/andre/snap/exercism/5/exercism/go'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. [0m
+[0m2021.05.14 19:51:04 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/leap/src/main/scala/Leap.scala[0m
+[0m2021.05.14 19:51:08 INFO  no build target: using presentation compiler with only scala-library: 2.12.13[0m
+[0m2021.05.14 19:51:12 INFO  time: code lens generation in 6.74s[0m
+[0m2021.05.14 19:51:48 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/leap/src/main/scala/Leap.scala[0m
+[0m2021.05.14 20:35:26 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/leap/src/main/scala/Leap.scala[0m
+[0m2021.05.14 20:35:49 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/leap/src/main/scala/Leap.scala[0m
+[0m2021.05.14 20:35:53 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/leap/src/main/scala/Leap.scala[0m
+[0m2021.05.14 20:35:57 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/leap/src/main/scala/Leap.scala[0m
+[0m2021.05.14 20:36:02 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/leap/src/main/scala/Leap.scala[0m
+[0m2021.05.14 20:36:15 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/leap/src/main/scala/Leap.scala[0m
+[0m2021.05.14 20:37:05 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/leap/src/main/scala/Leap.scala[0m
+[0m2021.05.14 20:37:11 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/leap/src/main/scala/Leap.scala[0m
+[0m2021.05.14 20:37:13 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/leap/src/main/scala/Leap.scala[0m
+[0m2021.05.14 20:37:16 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/leap/src/main/scala/Leap.scala[0m
+[0m2021.05.14 20:37:23 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/leap/src/main/scala/Leap.scala[0m
+[0m2021.05.14 20:37:28 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/leap/src/main/scala/Leap.scala[0m
+[0m2021.05.14 20:37:32 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/leap/src/main/scala/Leap.scala[0m
+[0m2021.05.14 20:37:33 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/leap/src/main/scala/Leap.scala[0m
+[0m2021.05.14 20:38:16 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/leap/src/main/scala/Leap.scala[0m
+[0m2021.05.14 20:38:25 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/leap/src/main/scala/Leap.scala[0m
+[0m2021.05.14 20:38:27 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/leap/src/main/scala/Leap.scala[0m
+[0m2021.05.14 20:39:24 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/leap/src/main/scala/Leap.scala[0m
+[0m2021.05.14 20:39:29 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/leap/src/main/scala/Leap.scala[0m
+[0m2021.05.14 20:39:32 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/leap/src/main/scala/Leap.scala[0m
+[0m2021.05.14 20:39:36 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/leap/src/main/scala/Leap.scala[0m
+[0m2021.05.14 20:39:36 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/leap/src/main/scala/Leap.scala[0m
+[0m2021.05.14 20:39:43 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/leap/src/main/scala/Leap.scala[0m
+[0m2021.05.14 20:39:44 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/leap/src/main/scala/Leap.scala[0m
+[0m2021.05.14 20:39:53 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/leap/src/main/scala/Leap.scala[0m
+[0m2021.05.14 20:40:05 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/leap/src/main/scala/Leap.scala[0m
+[0m2021.05.14 20:40:08 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/leap/src/main/scala/Leap.scala[0m
+[0m2021.05.14 20:41:21 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/leap/src/main/scala/Leap.scala[0m
+[0m2021.05.15 00:40:08 INFO  shutting down Metals[0m
+[0m2021.05.15 17:22:34 INFO  Started: Metals version 0.10.2 in workspace '/home/andre/snap/exercism/5/exercism/go' for client vscode 1.55.2.[0m
+[0m2021.05.15 17:22:35 INFO  time: initialize in 0.9s[0m
+[0m2021.05.15 17:22:35 WARN  Build server is not auto-connectable.[0m
+[0m2021.05.15 17:22:35 WARN  no build tool detected in workspace '/home/andre/snap/exercism/5/exercism/go'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. [0m
+[0m2021.05.15 17:22:36 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/robot-simulator/src/main/scala/Robot.scala[0m
+[0m2021.05.15 17:22:41 INFO  no build target: using presentation compiler with only scala-library: 2.12.13[0m
+[0m2021.05.15 17:22:47 INFO  time: code lens generation in 9.87s[0m
+[0m2021.05.15 17:27:58 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/robot-simulator/src/main/scala/Robot.scala[0m
+[0m2021.05.15 17:27:58 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/robot-simulator/src/main/scala/Robot.scala[0m
+[0m2021.05.15 17:27:58 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/robot-simulator/src/main/scala/Robot.scala[0m
+[0m2021.05.15 17:27:58 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/robot-simulator/src/main/scala/Robot.scala[0m
+[0m2021.05.15 17:27:58 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/robot-simulator/src/main/scala/Robot.scala[0m
+[0m2021.05.15 18:28:45 INFO  shutting down Metals[0m
+[0m2021.05.15 23:52:05 INFO  Started: Metals version 0.10.2 in workspace '/home/andre/snap/exercism/5/exercism/go' for client vscode 1.56.2.[0m
+[0m2021.05.15 23:52:06 INFO  time: initialize in 1.03s[0m
+[0m2021.05.15 23:52:06 WARN  Build server is not auto-connectable.[0m
+[0m2021.05.15 23:52:06 WARN  no build tool detected in workspace '/home/andre/snap/exercism/5/exercism/go'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. [0m
+[0m2021.05.15 23:52:07 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/robot-simulator/src/main/scala/Robot.scala[0m
+[0m2021.05.15 23:52:13 INFO  no build target: using presentation compiler with only scala-library: 2.12.13[0m
+[0m2021.05.15 23:52:20 INFO  time: code lens generation in 11s[0m
+[0m2021.05.15 23:52:20 INFO  time: code lens generation in 12s[0m
+[0m2021.05.16 00:15:02 INFO  shutting down Metals[0m
+[0m2021.05.18 13:36:08 INFO  Started: Metals version 0.10.2 in workspace '/home/andre/snap/exercism/5/exercism/go' for client vscode 1.56.2.[0m
+[0m2021.05.18 13:36:21 INFO  time: initialize in 12s[0m
+[0m2021.05.18 13:36:32 WARN  Build server is not auto-connectable.[0m
+[0m2021.05.18 13:36:32 WARN  no build tool detected in workspace '/home/andre/snap/exercism/5/exercism/go'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. [0m
+[0m2021.05.18 19:17:01 INFO  shutting down Metals[0m
+[0m2021.05.23 18:26:08 INFO  Started: Metals version 0.10.3 in workspace '/home/andre/snap/exercism/5/exercism/go' for client Visual Studio Code 1.56.2.[0m
+[0m2021.05.23 18:26:11 INFO  time: initialize in 2.16s[0m
+[0m2021.05.23 18:26:11 WARN  Build server is not auto-connectable.[0m
+[0m2021.05.23 18:26:11 WARN  no build tool detected in workspace '/home/andre/snap/exercism/5/exercism/go'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. [0m
+[0m2021.05.23 18:26:11 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/secret-handshake/src/main/scala/SecretHandshake.scala[0m
+[0m2021.05.23 18:26:16 INFO  no build target: using presentation compiler with only scala-library: 2.12.13[0m
+[0m2021.05.23 18:26:21 INFO  time: code lens generation in 9.65s[0m
+[0m2021.05.23 18:30:06 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/secret-handshake/src/main/scala/SecretHandshake.scala[0m
+[0m2021.05.23 18:30:06 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/secret-handshake/src/main/scala/SecretHandshake.scala[0m
+[0m2021.05.23 18:48:00 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/secret-handshake/src/main/scala/SecretHandshake.scala[0m
+[0m2021.05.23 18:48:00 WARN  no build target for: /home/andre/snap/exercism/5/exercism/scala/secret-handshake/src/main/scala/SecretHandshake.scala[0m
+[0m2021.05.24 00:06:18 INFO  shutting down Metals[0m
