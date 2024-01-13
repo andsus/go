@@ -10,15 +10,16 @@ import (
 type Matrix [][]int
 
 // New creates a matrix from a string.
-func New(input string) (Matrix, error) {
-	var res [][]int
+func New(input string) (*Matrix, error) {
+	var res Matrix
 
 	var cols int
 
 	for i, line := range strings.Split(input, "\n") {
 		var row []int
 		line = strings.TrimSpace(line)
-		for _, strNum := range strings.Split(line, " ") {
+
+		for _, strNum := range strings.Fields(line) {
 			num, err := strconv.Atoi(strNum)
 			if err != nil {
 				return nil, errors.New("error string converting number")
@@ -32,7 +33,7 @@ func New(input string) (Matrix, error) {
 		res = append(res, row)
 	}
 
-	return res, nil
+	return &res, nil
 }
 
 // Rows gets the matrix represented in rows.
@@ -40,7 +41,7 @@ func (m Matrix) Rows() [][]int {
 	nRows := len(m)
 
 	if nRows == 0 {
-		return [][]int{}
+		return Matrix{}
 	}
 
 	res := make([][]int, nRows)

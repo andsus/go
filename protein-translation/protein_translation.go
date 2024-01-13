@@ -44,7 +44,10 @@ func FromCodon(input string) (string, error) {
 // FromRNA translates polypetides to a sequence of proteins
 // stops if a STOP codon is read
 func FromRNA(in string) (rna []string, err error) {
-	// instead of i++ use += 3, to avoid if (i+1)%3 == 0
+	if len(in)%3 != 0 {
+		return []string{}, ErrInvalidBase
+	}
+
 	for i := 0; i < len(in); i += 3 {
 		codon := in[i : i+3]
 
